@@ -1,0 +1,72 @@
+# Результаты сборки Java
+target/
+build/
+out/
+.gradle/
+*.class
+*.jar
+*.war
+*.ear
+
+# Файлы Maven Wrapper должны оставаться в репозитории
+!.mvn/wrapper/maven-wrapper.jar
+
+# Локальные настройки IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+.vscode/
+.factorypath
+
+# Временные файлы редакторов
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Служебные файлы ОС
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Диагностика JVM
+hs_err_pid*
+replay_pid*
+*.hprof
+*.jfr
+
+# Локальные файловые базы H2
+*.mv.db
+*.trace.db
+*.lock.db
+
+# Локальные секреты
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Локальные инструменты разработки и планирования
+_bmad/
+_bmad-output/
+.bmad/
+.agents/
+.claude/
+.codex/
+AGENTS.md
+AGENTS.override.md
+SKILL.md
+
+# Исходное задание хранится только локально
+/docs/requirements.md
+
+# Журналы приложения сохраняются в Git
+!*.log
+!logs/
+!**/logs/
+!**/logs/**

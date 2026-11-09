@@ -1,0 +1,13 @@
+**
+!api-gateway/
+!api-gateway/target/
+!api-gateway/target/api-gateway-1.0.0.jar
+!hotel-service/
+!hotel-service/target/
+!hotel-service/target/hotel-service-1.0.0.jar
+!booking-service/
+!booking-service/target/
+!booking-service/target/booking-service-1.0.0.jar
+!eureka-server/
+!eureka-server/target/
+!eureka-server/target/eureka-server-1.0.0.jar

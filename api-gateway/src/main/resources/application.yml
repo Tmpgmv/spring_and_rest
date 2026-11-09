@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      # Явные группы маршрутов; автоматические маршруты обнаружения отключены.
+      # Все адресаты задаются логическими именами Eureka.
+      routes:
+        - id: hotels
+          uri: lb://hotel-service
+          predicates:
+            - Path=/api/hotels/**
+        - id: rooms
+          uri: lb://hotel-service
+          predicates:
+            - Path=/api/rooms/**
+        - id: bookings
+          uri: lb://booking-service
+          predicates:
+            - Path=/api/bookings/**
+          filters:
+            # Удаляем сегменты пути api и bookings:
+            # /api/bookings/user/register преобразуется в локальный путь сервиса /user/register.
+            - StripPrefix=2
+
+eureka:
+  client:
+    fail-fast: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+# Выводим traceId из MDC, установленный TraceIdFilter, рядом с уровнем журнала;
+# остальная стандартная раскладка консоли Boot сохраняется.
+logging:
+  file:
+    name: logs/${spring.application.name}.log
+  pattern:
+    level: "%5p [${spring.application.name},%X{traceId:-}]"

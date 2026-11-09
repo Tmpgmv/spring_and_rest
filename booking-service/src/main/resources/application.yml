@@ -1,0 +1,71 @@
+server:
+  port: 8082
+
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  application:
+    name: booking-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # Общий секрет HMAC HS256: Base64 от 48 случайных байтов
+          # при минимуме Nimbus в 32 байта. Значение для разработки и тестов,
+          # не для эксплуатации; сервис отелей использует тот же ключ проверки.
+          secret: jmqM3NtL6sSSnBs3RymTk5GuR//V0SVGM6LSPtoKeUnUlMytGT9Td4d3QaqfTPf/
+  datasource:
+    url: jdbc:h2:mem:booking;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    defer-datasource-initialization: true
+
+eureka:
+  client:
+    fail-fast: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+# Срок токена в секундах: один час, без константы в коде.
+# В Boot нет стандартного ключа для этого, поэтому используется пространство auth.*.
+auth:
+  internal:
+    key: ${INTERNAL_API_KEY:local-internal-key-change-me}
+  jwt:
+    ttl-seconds: 3600
+
+# Выводим traceId из MDC, установленный TraceIdFilter, рядом с уровнем журнала;
+# остальная стандартная раскладка консоли Boot сохраняется.
+logging:
+  file:
+    name: logs/${spring.application.name}.log
+  pattern:
+    level: "%5p [${spring.application.name},%X{traceId:-}]"
+
+hotel:
+  client:
+    connect-timeout: 2s
+    read-timeout: 2s
+    resilience:
+      timeout: 2s
+      max-attempts: 3
+      initial-backoff: 500ms
+      backoff-multiplier: 2
+      failure-rate-threshold: 50
+      window-size: 10
+      minimum-calls: 10
+      open-duration: 10s
+      half-open-calls: 3
+      workers: 16
+booking:
+  orphan:
+    # Пять минут значительно превышают ограниченную длительность подтверждения и повторов.
+    threshold: 5m
+    sweep-interval: 1m
+  replay:
+    wait-timeout: 5s
+    poll-interval: 25ms

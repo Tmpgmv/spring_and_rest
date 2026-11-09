@@ -1,0 +1,4 @@
+org.springframework.test.context.ContextCustomizerFactory=\
+com.example.testing.IsolatedDatabaseContextCustomizerFactory
+org.springframework.test.context.TestExecutionListener=\
+com.example.testing.IsolatedDatabaseTestExecutionListener

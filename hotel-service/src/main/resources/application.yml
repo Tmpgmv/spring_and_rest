@@ -1,0 +1,41 @@
+server:
+  port: 8081
+
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          secret: jmqM3NtL6sSSnBs3RymTk5GuR//V0SVGM6LSPtoKeUnUlMytGT9Td4d3QaqfTPf/
+  application:
+    name: hotel-service
+  datasource:
+    url: jdbc:h2:mem:hotel;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    defer-datasource-initialization: true
+
+eureka:
+  client:
+    fail-fast: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+# Выводим traceId из MDC, установленный TraceIdFilter, рядом с уровнем журнала;
+# остальная стандартная раскладка консоли Boot сохраняется.
+logging:
+  file:
+    name: logs/${spring.application.name}.log
+  pattern:
+    level: "%5p [${spring.application.name},%X{traceId:-}]"
+
+# Общий ключ с сервисом бронирования для служебных операций; переопределяется через окружение.
+auth:
+  internal:
+    key: ${INTERNAL_API_KEY:local-internal-key-change-me}

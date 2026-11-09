@@ -1,0 +1,64 @@
+name: hotel-booking
+
+services:
+  eureka-server:
+    build:
+      context: .
+      args:
+        SERVICE: eureka-server
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+    networks:
+      - backend
+    restart: unless-stopped
+
+  hotel-service:
+    build:
+      context: .
+      args:
+        SERVICE: hotel-service
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET to a Base64 encoded random key of at least 32 bytes}
+      INTERNAL_API_KEY: ${INTERNAL_API_KEY:?Set INTERNAL_API_KEY to a random shared key}
+    networks:
+      - backend
+    depends_on:
+      - eureka-server
+    restart: unless-stopped
+
+  booking-service:
+    build:
+      context: .
+      args:
+        SERVICE: booking-service
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET to a Base64 encoded random key of at least 32 bytes}
+      INTERNAL_API_KEY: ${INTERNAL_API_KEY:?Set INTERNAL_API_KEY to a random shared key}
+    networks:
+      - backend
+    depends_on:
+      - eureka-server
+    restart: unless-stopped
+
+  api-gateway:
+    build:
+      context: .
+      args:
+        SERVICE: api-gateway
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+    networks:
+      - backend
+      - edge
+    ports:
+      - "${GATEWAY_BIND_ADDRESS:-127.0.0.1}:${GATEWAY_PORT:-8080}:8080"
+    depends_on:
+      - eureka-server
+    restart: unless-stopped
+
+networks:
+  backend:
+    internal: true
+  edge: {}
