@@ -1,0 +1,2309 @@
+{
+	"info": {
+		"_postman_id": "ca9a4ad5-93c5-4b33-bb3c-7d0383608d02",
+		"name": "Hotel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5120740"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "rooms",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "release",
+									"item": [
+										{
+											"name": "Release a matching reservation idempotently without decrementing demand",
+											"request": {
+												"auth": {
+													"type": "apikey",
+													"apikey": [
+														{
+															"key": "key",
+															"value": "X-Internal-Key",
+															"type": "string"
+														},
+														{
+															"key": "value",
+															"value": "{{apiKey}}",
+															"type": "string"
+														},
+														{
+															"key": "in",
+															"value": "header",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"endDate\": \"1973-03-23\",\n  \"requestId\": \"string\",\n  \"startDate\": \"1971-12-20\",\n  \"dateRangeValid\": false\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/rooms/:id/release",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"rooms",
+														":id",
+														"release"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "2126"
+														}
+													]
+												},
+												"description": "Required role: INTERNAL."
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "X-Internal-Key",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"endDate\": \"1973-03-23\",\n  \"requestId\": \"string\",\n  \"startDate\": \"1971-12-20\",\n  \"dateRangeValid\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/rooms/:id/release",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"rooms",
+																":id",
+																"release"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Invalid request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "X-Internal-Key",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"endDate\": \"1973-03-23\",\n  \"requestId\": \"string\",\n  \"startDate\": \"1971-12-20\",\n  \"dateRangeValid\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/rooms/:id/release",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"rooms",
+																":id",
+																"release"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "Missing or invalid credentials",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "X-Internal-Key",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"endDate\": \"1973-03-23\",\n  \"requestId\": \"string\",\n  \"startDate\": \"1971-12-20\",\n  \"dateRangeValid\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/rooms/:id/release",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"rooms",
+																":id",
+																"release"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "Required role or internal key missing",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "X-Internal-Key",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"endDate\": \"1973-03-23\",\n  \"requestId\": \"string\",\n  \"startDate\": \"1971-12-20\",\n  \"dateRangeValid\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/rooms/:id/release",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"rooms",
+																":id",
+																"release"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "Conflict",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "X-Internal-Key",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"endDate\": \"1973-03-23\",\n  \"requestId\": \"string\",\n  \"startDate\": \"1971-12-20\",\n  \"dateRangeValid\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/rooms/:id/release",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"rooms",
+																":id",
+																"release"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Conflict",
+													"code": 409,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "confirm-availability",
+									"item": [
+										{
+											"name": "Confirm availability idempotently and increment demand once",
+											"request": {
+												"auth": {
+													"type": "apikey",
+													"apikey": [
+														{
+															"key": "key",
+															"value": "X-Internal-Key",
+															"type": "string"
+														},
+														{
+															"key": "value",
+															"value": "{{apiKey}}",
+															"type": "string"
+														},
+														{
+															"key": "in",
+															"value": "header",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"endDate\": \"1973-03-23\",\n  \"requestId\": \"string\",\n  \"startDate\": \"1971-12-20\",\n  \"dateRangeValid\": false\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/rooms/:id/confirm-availability",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"rooms",
+														":id",
+														"confirm-availability"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "2126"
+														}
+													]
+												},
+												"description": "Required role: INTERNAL."
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "X-Internal-Key",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"endDate\": \"1973-03-23\",\n  \"requestId\": \"string\",\n  \"startDate\": \"1971-12-20\",\n  \"dateRangeValid\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/rooms/:id/confirm-availability",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"rooms",
+																":id",
+																"confirm-availability"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Invalid request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "X-Internal-Key",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"endDate\": \"1973-03-23\",\n  \"requestId\": \"string\",\n  \"startDate\": \"1971-12-20\",\n  \"dateRangeValid\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/rooms/:id/confirm-availability",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"rooms",
+																":id",
+																"confirm-availability"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "Missing or invalid credentials",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "X-Internal-Key",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"endDate\": \"1973-03-23\",\n  \"requestId\": \"string\",\n  \"startDate\": \"1971-12-20\",\n  \"dateRangeValid\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/rooms/:id/confirm-availability",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"rooms",
+																":id",
+																"confirm-availability"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "Required role or internal key missing",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "X-Internal-Key",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"endDate\": \"1973-03-23\",\n  \"requestId\": \"string\",\n  \"startDate\": \"1971-12-20\",\n  \"dateRangeValid\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/rooms/:id/confirm-availability",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"rooms",
+																":id",
+																"confirm-availability"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "Resource not found",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "X-Internal-Key",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"endDate\": \"1973-03-23\",\n  \"requestId\": \"string\",\n  \"startDate\": \"1971-12-20\",\n  \"dateRangeValid\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/rooms/:id/confirm-availability",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"rooms",
+																":id",
+																"confirm-availability"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "Conflict",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "X-Internal-Key",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"endDate\": \"1973-03-23\",\n  \"requestId\": \"string\",\n  \"startDate\": \"1971-12-20\",\n  \"dateRangeValid\": false\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/rooms/:id/confirm-availability",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"rooms",
+																":id",
+																"confirm-availability"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Conflict",
+													"code": 409,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "recommend",
+							"item": [
+								{
+									"name": "Recommend available rooms ordered by timesBooked then ID",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{userToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/rooms/recommend?startDate=2026-12-&endDate=2026-12-20",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"rooms",
+												"recommend"
+											],
+											"query": [
+												{
+													"key": "startDate",
+													"value": "2026-12-"
+												},
+												{
+													"key": "endDate",
+													"value": "2026-12-20"
+												}
+											]
+										},
+										"description": "Required role: USER."
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/rooms/recommend?startDate=2019-12-31&endDate=2019-12-31",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"rooms",
+														"recommend"
+													],
+													"query": [
+														{
+															"key": "startDate",
+															"value": "2019-12-31"
+														},
+														{
+															"key": "endDate",
+															"value": "2019-12-31"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"id\": 5986,\n    \"hotelId\": 8198,\n    \"number\": \"string\",\n    \"available\": false,\n    \"timesBooked\": 9775\n  },\n  {\n    \"id\": 3987,\n    \"hotelId\": 2864,\n    \"number\": \"string\",\n    \"available\": true,\n    \"timesBooked\": 3496\n  }\n]"
+										},
+										{
+											"name": "Invalid request",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/rooms/recommend?startDate=2019-12-31&endDate=2019-12-31",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"rooms",
+														"recommend"
+													],
+													"query": [
+														{
+															"key": "startDate",
+															"value": "2019-12-31"
+														},
+														{
+															"key": "endDate",
+															"value": "2019-12-31"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Missing or invalid credentials",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/rooms/recommend?startDate=2019-12-31&endDate=2019-12-31",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"rooms",
+														"recommend"
+													],
+													"query": [
+														{
+															"key": "startDate",
+															"value": "2019-12-31"
+														},
+														{
+															"key": "endDate",
+															"value": "2019-12-31"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Required role or internal key missing",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/rooms/recommend?startDate=2019-12-31&endDate=2019-12-31",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"rooms",
+														"recommend"
+													],
+													"query": [
+														{
+															"key": "startDate",
+															"value": "2019-12-31"
+														},
+														{
+															"key": "endDate",
+															"value": "2019-12-31"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Find available rooms for a date interval",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/rooms?startDate=2026-12-05&endDate=2026-12-01",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"rooms"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": "2026-12-05"
+										},
+										{
+											"key": "endDate",
+											"value": "2026-12-01"
+										}
+									]
+								},
+								"description": "Required role: USER."
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/rooms?startDate=2019-12-31&endDate=2019-12-31&hotelId=2126",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"rooms"
+											],
+											"query": [
+												{
+													"key": "startDate",
+													"value": "2019-12-31"
+												},
+												{
+													"key": "endDate",
+													"value": "2019-12-31"
+												},
+												{
+													"key": "hotelId",
+													"value": "2126"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": 5986,\n    \"hotelId\": 8198,\n    \"number\": \"string\",\n    \"available\": false,\n    \"timesBooked\": 9775\n  },\n  {\n    \"id\": 3987,\n    \"hotelId\": 2864,\n    \"number\": \"string\",\n    \"available\": true,\n    \"timesBooked\": 3496\n  }\n]"
+								},
+								{
+									"name": "Invalid request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/rooms?startDate=2019-12-31&endDate=2019-12-31&hotelId=2126",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"rooms"
+											],
+											"query": [
+												{
+													"key": "startDate",
+													"value": "2019-12-31"
+												},
+												{
+													"key": "endDate",
+													"value": "2019-12-31"
+												},
+												{
+													"key": "hotelId",
+													"value": "2126"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Missing or invalid credentials",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/rooms?startDate=2019-12-31&endDate=2019-12-31&hotelId=2126",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"rooms"
+											],
+											"query": [
+												{
+													"key": "startDate",
+													"value": "2019-12-31"
+												},
+												{
+													"key": "endDate",
+													"value": "2019-12-31"
+												},
+												{
+													"key": "hotelId",
+													"value": "2126"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Required role or internal key missing",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/rooms?startDate=2019-12-31&endDate=2019-12-31&hotelId=2126",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"rooms"
+											],
+											"query": [
+												{
+													"key": "startDate",
+													"value": "2019-12-31"
+												},
+												{
+													"key": "endDate",
+													"value": "2019-12-31"
+												},
+												{
+													"key": "hotelId",
+													"value": "2126"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Create a room",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{userToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/rooms",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"rooms"
+									]
+								},
+								"description": "Required role: ADMIN."
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"hotelId\": 6411,\n  \"number\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/rooms",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"rooms"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": 1195,\n  \"hotelId\": 8180,\n  \"number\": \"string\",\n  \"available\": true,\n  \"timesBooked\": 9757\n}"
+								},
+								{
+									"name": "Invalid request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"hotelId\": 6411,\n  \"number\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/rooms",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"rooms"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Missing or invalid credentials",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"hotelId\": 6411,\n  \"number\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/rooms",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"rooms"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Required role or internal key missing",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"hotelId\": 6411,\n  \"number\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/rooms",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"rooms"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Resource not found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"hotelId\": 6411,\n  \"number\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/rooms",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"rooms"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "hotels",
+					"item": [
+						{
+							"name": "{hotelId}",
+							"item": [
+								{
+									"name": "occupancy",
+									"item": [
+										{
+											"name": "Read hotel occupancy in UTC",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{userToken}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\"startDate\": \"2026-12-01\", \n\"endDate\": \"2026-12-05\"}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/hotels/999/occupancy",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"hotels",
+														"999",
+														"occupancy"
+													]
+												},
+												"description": "Required role: ADMIN."
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/hotels/:hotelId/occupancy",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"hotels",
+																":hotelId",
+																"occupancy"
+															],
+															"variable": [
+																{
+																	"key": "hotelId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "*/*"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"hotelId\": 3851,\n  \"asOfDate\": \"1951-03-10\",\n  \"rooms\": [\n    {\n      \"roomId\": 4434,\n      \"number\": \"string\",\n      \"available\": false,\n      \"timesBooked\": 3965,\n      \"heldSlots\": 4902,\n      \"occupied\": true\n    },\n    {\n      \"roomId\": 278,\n      \"number\": \"string\",\n      \"available\": false,\n      \"timesBooked\": 5426,\n      \"heldSlots\": 1940,\n      \"occupied\": true\n    }\n  ],\n  \"aggregate\": {\n    \"totalRooms\": 2982,\n    \"occupiedRooms\": 8515,\n    \"timesBooked\": 7229,\n    \"heldSlots\": 6921\n  }\n}"
+												},
+												{
+													"name": "Missing or invalid credentials",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/hotels/:hotelId/occupancy",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"hotels",
+																":hotelId",
+																"occupancy"
+															],
+															"variable": [
+																{
+																	"key": "hotelId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "Required role or internal key missing",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/hotels/:hotelId/occupancy",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"hotels",
+																":hotelId",
+																"occupancy"
+															],
+															"variable": [
+																{
+																	"key": "hotelId"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "Resource not found",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/hotels/:hotelId/occupancy",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"hotels",
+																":hotelId",
+																"occupancy"
+															],
+															"variable": [
+																{
+																	"key": "hotelId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "List hotels",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{userToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/hotels",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"hotels"
+									]
+								},
+								"description": "Required role: USER."
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/hotels",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"hotels"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": 3740,\n    \"name\": \"string\",\n    \"address\": \"string\"\n  },\n  {\n    \"id\": 3569,\n    \"name\": \"string\",\n    \"address\": \"string\"\n  }\n]"
+								},
+								{
+									"name": "Missing or invalid credentials",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/hotels",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"hotels"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Required role or internal key missing",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/hotels",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"hotels"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Create a hotel",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/hotels",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"hotels"
+									]
+								},
+								"description": "Required role: ADMIN."
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"address\": \"string\",\n  \"name\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/hotels",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"hotels"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": 6582,\n  \"name\": \"string\",\n  \"address\": \"string\"\n}"
+								},
+								{
+									"name": "Invalid request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"address\": \"string\",\n  \"name\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/hotels",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"hotels"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Missing or invalid credentials",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"address\": \"string\",\n  \"name\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/hotels",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"hotels"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Required role or internal key missing",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"address\": \"string\",\n  \"name\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/hotels",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"hotels"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"timestamp\": \"1994-06-10T05:11:46.308Z\",\n  \"status\": 2920,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\",\n  \"traceId\": \"string\",\n  \"fieldErrors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8081"
+		},
+		{
+			"key": "userToken",
+			"value": ""
+		},
+		{
+			"key": "adminToken",
+			"value": ""
+		}
+	]
+}

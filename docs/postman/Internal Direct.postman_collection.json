@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "bedd98e0-213f-407a-9f96-2d511effe98d",
+		"name": "Internal Direct",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5120740"
+	},
+	"item": [
+		{
+			"name": "Confirm Availability",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Internal-Key",
+						"value": "{{internalKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"startDate\": \"2026-12-10\",\n  \"endDate\": \"2026-12-15\",\n  \"requestId\": \"test-internal-uuid-1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{internalUrl}}/api/rooms/1/confirm-availability",
+					"host": [
+						"{{internalUrl}}"
+					],
+					"path": [
+						"api",
+						"rooms",
+						"1",
+						"confirm-availability"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Release",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Internal-Key",
+						"value": "{{internalKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"startDate\": \"2030-06-01\",\n  \"endDate\": \"2030-06-04\",\n  \"requestId\": \"test-internal-uuid-2\"\n}"
+				},
+				"url": {
+					"raw": "{{internalUrl}}/api/rooms/1/release",
+					"host": [
+						"{{internalUrl}}"
+					],
+					"path": [
+						"api",
+						"rooms",
+						"1",
+						"release"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "internalUrl",
+			"value": ""
+		},
+		{
+			"key": "internalKey",
+			"value": ""
+		}
+	]
+}
