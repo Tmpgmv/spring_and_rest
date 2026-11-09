@@ -51,19 +51,6 @@ replay_pid*
 !.env.example
 !.env.template
 
-# Локальные инструменты разработки и планирования
-_bmad/
-_bmad-output/
-.bmad/
-.agents/
-.claude/
-.codex/
-AGENTS.md
-AGENTS.override.md
-SKILL.md
-
-# Исходное задание хранится только локально
-/docs/requirements.md
 
 # Журналы приложения сохраняются в Git
 !*.log
