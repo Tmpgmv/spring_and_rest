@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1140" height="550" viewBox="0 0 1140 550"
+     role="img" aria-labelledby="title description">
+  <title id="title">Схема базы данных сервиса бронирования</title>
+  <desc id="description">
+    База данных jdbc:h2:mem:booking.
+    Пользователь может иметь несколько бронирований.
+    Бронированию соответствует не более одной записи обработки запроса.
+    Идентификатор номера относится к сервису отелей и не является внешним ключом.
+  </desc>
+
+  <style>
+    text {
+      font-family: Arial, sans-serif;
+      fill: #172033;
+    }
+    .table {
+      fill: white;
+      stroke: #64748b;
+      stroke-width: 1.5;
+    }
+    .header { fill: #1e3a5f; }
+    .table-name {
+      fill: white;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .field {
+      font-family: monospace;
+      font-size: 14px;
+    }
+    .relation {
+      fill: none;
+      stroke: #2563eb;
+      stroke-width: 2;
+    }
+    .cardinality {
+      fill: #2563eb;
+      font-size: 15px;
+      font-weight: bold;
+    }
+    .note {
+      fill: #475569;
+      font-size: 13px;
+    }
+  </style>
+
+  <rect width="1140" height="550" fill="#f1f5f9"/>
+
+  <text x="30" y="38" font-size="24" font-weight="bold">
+    База данных сервиса бронирования
+  </text>
+  <text x="30" y="65" font-size="16">jdbc:h2:mem:booking</text>
+
+  <!-- Таблица пользователей -->
+  <rect class="table" x="30" y="110" width="270" height="185" rx="8"/>
+  <path class="header"
+        d="M38 110 H292 Q300 110 300 118 V152 H30 V118 Q30 110 38 110"/>
+  <text class="table-name" x="47" y="137">users — пользователи</text>
+
+  <text class="field" x="47" y="181">PK  id        BIGINT</text>
+  <text class="field" x="47" y="211">UQ  username  VARCHAR(100)</text>
+  <text class="field" x="47" y="241">    password  VARCHAR(100)</text>
+  <text class="field" x="47" y="271">    role      VARCHAR(10)</text>
+
+  <!-- Таблица бронирований -->
+  <rect class="table" x="385" y="110" width="285" height="275" rx="8"/>
+  <path class="header"
+        d="M393 110 H662 Q670 110 670 118 V152 H385 V118 Q385 110 393 110"/>
+  <text class="table-name" x="402" y="137">bookings — бронирования</text>
+
+  <text class="field" x="402" y="181">PK  id          BIGINT</text>
+  <text class="field" x="402" y="211">FK  user_id     BIGINT</text>
+  <text class="field" x="402" y="241">    room_id     BIGINT *</text>
+  <text class="field" x="402" y="271">    start_date  DATE</text>
+  <text class="field" x="402" y="301">    end_date    DATE</text>
+  <text class="field" x="402" y="331">    status      VARCHAR(20)</text>
+  <text class="field" x="402" y="361">    created_at  TIMESTAMP</text>
+
+  <!-- Таблица обработки идемпотентных запросов -->
+  <rect class="table" x="760" y="110" width="350" height="275" rx="8"/>
+  <path class="header"
+        d="M768 110 H1102 Q1110 110 1110 118 V172 H760 V118 Q760 110 768 110"/>
+  <text class="table-name" x="777" y="136">processed_requests</text>
+  <text x="777" y="158" style="fill:white;font-size:14px">
+    Обработка запросов
+  </text>
+
+  <text class="field" x="777" y="201">PK     id                 BIGINT</text>
+  <text class="field" x="777" y="231">UQ     request_id         VARCHAR(255)</text>
+  <text class="field" x="777" y="261">FK,UQ  booking_id         BIGINT</text>
+  <text class="field" x="777" y="291">       http_status        INTEGER *</text>
+  <text class="field" x="777" y="321">       response_snapshot  CLOB *</text>
+  <text class="field" x="777" y="351">       processed_at       TIMESTAMP</text>
+
+  <!-- Один пользователь может иметь от нуля до множества бронирований -->
+  <path class="relation" d="M300 181 H342 V211 H385"/>
+  <text class="cardinality" x="309" y="171">1</text>
+  <text class="cardinality" x="351" y="200">0..N</text>
+
+  <!-- Запись обработки запроса обязательно относится к одному бронированию -->
+  <path class="relation" d="M670 181 H715 V261 H760"/>
+  <text class="cardinality" x="679" y="171">1</text>
+  <text class="cardinality" x="720" y="250">0..1</text>
+
+  <text class="note" x="30" y="420">
+    PK — первичный ключ; FK — внешний ключ; UQ — уникальность; * — допускается NULL.
+  </text>
+  <text class="note" x="30" y="444">
+    Остальные поля обязательны. Первичные ключи генерируются базой данных.
+  </text>
+  <text class="note" x="30" y="468">
+    room_id — идентификатор номера в сервисе отелей; внешнего ключа между базами нет.
+  </text>
+  <text class="note" x="30" y="492">
+    password хранит хеш BCrypt. Роли: USER — пользователь, ADMIN — администратор.
+  </text>
+  <text class="note" x="30" y="516">
+    Статусы: PENDING — ожидает подтверждения, CONFIRMED — подтверждено, CANCELLED — отменено.
+  </text>
+  <text class="note" x="30" y="540">
+    Код HTTP и сохранённое тело ответа используются при повторном запросе с тем же request_id.
+  </text>
+</svg>

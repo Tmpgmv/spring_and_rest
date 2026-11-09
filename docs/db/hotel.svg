@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1100" height="550" viewBox="0 0 1100 550"
+     role="img" aria-labelledby="title description">
+  <title id="title">Схема базы данных сервиса отелей</title>
+  <desc id="description">
+    База данных jdbc:h2:mem:hotel.
+    Отель может иметь несколько номеров.
+    Номер может иметь несколько интервалов резервирования.
+    Каждый номер принадлежит одному отелю,
+    каждый интервал резервирования относится к одному номеру.
+  </desc>
+
+  <style>
+    text {
+      font-family: Arial, sans-serif;
+      fill: #172033;
+    }
+    .table {
+      fill: white;
+      stroke: #64748b;
+      stroke-width: 1.5;
+    }
+    .header { fill: #1e3a5f; }
+    .table-name {
+      fill: white;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .field {
+      font-family: monospace;
+      font-size: 14px;
+    }
+    .relation {
+      fill: none;
+      stroke: #2563eb;
+      stroke-width: 2;
+    }
+    .cardinality {
+      fill: #2563eb;
+      font-size: 15px;
+      font-weight: bold;
+    }
+    .note {
+      fill: #475569;
+      font-size: 13px;
+    }
+  </style>
+
+  <rect width="1100" height="550" fill="#f1f5f9"/>
+
+  <text x="30" y="38" font-size="24" font-weight="bold">
+    База данных сервиса отелей
+  </text>
+  <text x="30" y="65" font-size="16">jdbc:h2:mem:hotel</text>
+
+  <!-- Таблица отелей -->
+  <rect class="table" x="30" y="110" width="260" height="155" rx="8"/>
+  <path class="header"
+        d="M38 110 H282 Q290 110 290 118 V152 H30 V118 Q30 110 38 110"/>
+  <text class="table-name" x="47" y="137">hotels — отели</text>
+
+  <text class="field" x="47" y="181">PK  id       BIGINT</text>
+  <text class="field" x="47" y="211">    name     VARCHAR</text>
+  <text class="field" x="47" y="241">    address  VARCHAR</text>
+
+  <!-- Таблица номеров -->
+  <rect class="table" x="380" y="110" width="280" height="215" rx="8"/>
+  <path class="header"
+        d="M388 110 H652 Q660 110 660 118 V152 H380 V118 Q380 110 388 110"/>
+  <text class="table-name" x="397" y="137">rooms — номера</text>
+
+  <text class="field" x="397" y="181">PK  id            BIGINT</text>
+  <text class="field" x="397" y="211">FK  hotel_id      BIGINT</text>
+  <text class="field" x="397" y="241">    number        VARCHAR</text>
+  <text class="field" x="397" y="271">    available     BOOLEAN</text>
+  <text class="field" x="397" y="301">    times_booked  BIGINT</text>
+
+  <!-- Таблица интервалов резервирования -->
+  <rect class="table" x="750" y="110" width="320" height="295" rx="8"/>
+  <path class="header"
+        d="M758 110 H1062 Q1070 110 1070 118 V172 H750 V118 Q750 110 758 110"/>
+  <text class="table-name" x="767" y="136">room_slots</text>
+  <text x="767" y="158" style="fill:white;font-size:14px">
+    Интервалы резервирования
+  </text>
+
+  <text class="field" x="767" y="201">PK  id          BIGINT</text>
+  <text class="field" x="767" y="231">FK  room_id     BIGINT</text>
+  <text class="field" x="767" y="261">    start_date  DATE</text>
+  <text class="field" x="767" y="291">    end_date    DATE</text>
+  <text class="field" x="767" y="321">UQ  request_id  VARCHAR</text>
+  <text class="field" x="767" y="351">    status      VARCHAR(20)</text>
+  <text class="field" x="767" y="381">    created_at  TIMESTAMP</text>
+
+  <!-- Один отель может иметь от нуля до множества номеров -->
+  <path class="relation" d="M290 181 H335 V211 H380"/>
+  <text class="cardinality" x="299" y="171">1</text>
+  <text class="cardinality" x="346" y="200">0..N</text>
+
+  <!-- Один номер может иметь от нуля до множества интервалов -->
+  <path class="relation" d="M660 181 H705 V231 H750"/>
+  <text class="cardinality" x="669" y="171">1</text>
+  <text class="cardinality" x="716" y="220">0..N</text>
+
+  <text class="note" x="30" y="438">
+    PK — первичный ключ; FK — внешний ключ; UQ — ограничение уникальности.
+  </text>
+  <text class="note" x="30" y="462">
+    Все поля обязательны. Первичные ключи генерируются базой данных.
+  </text>
+  <text class="note" x="30" y="486">
+    times_booked — исторический счётчик бронирований; при освобождении номера не уменьшается.
+  </text>
+  <text class="note" x="30" y="510">
+    Интервал дат: [start_date, end_date). День выезда не включается в период занятости.
+  </text>
+  <text class="note" x="30" y="534">
+    request_id обеспечивает идемпотентность: повторное подтверждение не создаёт второй интервал.
+  </text>
+</svg>
